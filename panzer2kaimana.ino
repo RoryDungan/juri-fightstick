@@ -159,7 +159,7 @@ void setJoystickDirection(int joyDirection)
 //    kaimana.setLED(led, LED_JOY_COLOR_ON);
 //  }
 
-  int RANGE = 4;
+  int RANGE = 2;
   
   for (int i = 0; i < 16; ++i)
   {

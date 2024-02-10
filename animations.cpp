@@ -43,7 +43,8 @@ int animation_idle(void)
   // set initial color to BLACK
   kaimana.setALL(BLACK);
 
-  float multiplier;
+  int multiplier;
+  int fadeInMultiplier = 0;
   int count = 0;
 
   unsigned long elapsedTime = 0;
@@ -62,14 +63,15 @@ int animation_idle(void)
 //          pgm_read_byte_near(&colorCycleData[((index+IDLE_OFFSET_0+((LED_COUNT-i)*IDLE_OFFSET))%IDLE_SIZE)])
 //        );
 //      }
+      fadeInMultiplier = 255 - pgm_read_byte_near(&sinusoid[129 - min(elapsedTime / 8, 129)]);
       for (i=0; i<LED_COUNT;++i)
       {
-        multiplier = pgm_read_byte_near(&sinusoid[((elapsedTime / 5) + i * 2) % 256]) / 255.0f;
+        multiplier = min(fadeInMultiplier, pgm_read_byte_near(&sinusoid[((elapsedTime / 5) + i * 2) % 256]));
 
         kaimana.setLED(i, 
-          (uint8_t)(multiplier * IDLE_COLOR_R),
-          (uint8_t)(multiplier * IDLE_COLOR_G),
-          (uint8_t)(multiplier * IDLE_COLOR_B));
+          (uint8_t)(multiplier * IDLE_COLOR_R / 255),
+          (uint8_t)(multiplier * IDLE_COLOR_G / 255),
+          (uint8_t)(multiplier * IDLE_COLOR_B / 255));
       }
 
       // update the leds with new/current colors in the array

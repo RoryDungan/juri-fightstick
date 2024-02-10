@@ -55,7 +55,9 @@
 */
 //#define LED_JOY_COLOR_OFF 30,99,60
 //#define LED_JOY_COLOR_OFF 126,17,79
-#define LED_JOY_COLOR_OFF 63,9,40
+//#define LED_JOY_COLOR_OFF 63,9,40
+#define LED_JOY_COLOR_OFF 0,0,0
+//#define LED_JOY_COLOR_OFF 13,2,8
 #define LED_P1_COLOR_OFF 0,0,0
 #define LED_P2_COLOR_OFF 0,0,0
 #define LED_P3_COLOR_OFF 0,0,0
@@ -69,9 +71,15 @@
 #define LED_START_COLOR_OFF 0,0,0
 
 // breathing idle
+/*
 #define IDLE_COLOR_R 30
 #define IDLE_COLOR_G 99
 #define IDLE_COLOR_B 60
+*/
+
+#define IDLE_COLOR_R 252
+#define IDLE_COLOR_G 35
+#define IDLE_COLOR_B 158
 
 
 //RANDOM COLORS SET
@@ -88,7 +96,7 @@
 #define  BOOT_COLOR_DELAY         250
 #define  BOOT_COMPLETE_DELAY      500
 #define  MAIN_LOOP_DELAY           50
-#define IDLE_TIMEOUT_SECONDS       30
+#define IDLE_TIMEOUT_SECONDS       0
 #define IDLE_ANIMATION_DELAY       8
 #define BRIGHTNESS                 1
 
